@@ -8,10 +8,10 @@ def ask_text(message):
 
 name = ask_text("Enter your character's name: ")
 
-def ask_number(message, min_val, max_val):
+def ask_number(message, min_val=None, max_val=None):
     while True:
         number = int(input(message).strip())
-        if number < min_val or number > max_val:
+        if min_val is not None and max_val is not None and number < min_val or number > max_val:
             print(f"Please enter a number between {min_val} and {max_val}.")
         else:
             return number
@@ -22,7 +22,7 @@ def ask_choice(message,options):
     while True:
         print(message)
         for i in range(len(options)):
-            print(i+1,"." ,options[i])
+            print(f"{i+1}. {options[i]}")
         choice = int(input("Your choice:"))
         if choice in range(1,len(options)+1):
             return choice
@@ -30,3 +30,9 @@ def ask_choice(message,options):
             print("Please enter a valid choice.")
 
 choice_option = ask_choice("Do you want to continue?", ["Yes", "No"])
+
+import json
+def load_file(file_path):
+    with open('file_path','r', encoding='utf-8') as f:
+        data = json.load(f)
+    return data
