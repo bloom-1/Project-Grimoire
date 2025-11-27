@@ -10,3 +10,4 @@ WEEK 1 :
 - Created our Git repository and added each other as collaborators
 - Created the files and directories required for the project
 - Implemented the modules needed
+- Did all the 3.1 functions but still need modifications
