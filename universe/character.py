@@ -22,6 +22,10 @@ Grimoire hint: Consider iterating directly over the keys of a dictionary. If a k
 • a list: convert its elements to strings and join them using join().
 • otherwise, simply display the value.
     """
+    print("Character profile:")
+    for elt in character:
+        for key in elt:
+            print(f"{elt} : {key}")
     return None
 
 def modify_money(character, amount):
