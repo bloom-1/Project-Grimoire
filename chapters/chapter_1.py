@@ -20,7 +20,7 @@ def introduction():
     This function displays the introductory text for the chapter. It should welcome the player and
 announce the beginning of the story.
     """
-    return None
+    return "Welcome to Chapter 1 – Arrival in the magical world"
 
 def create_character():
     """
@@ -30,8 +30,35 @@ ambition. The values entered are grouped in an attributes dictionary, then given
 init_character() function to create the complete character. Finally, the character's profile is
 displayed on the screen.
     """
-    init_character()
-    return None
+    fn = input("Enter your character's last name: ")
+    ln = input("Enter your character's first name: ")
+
+    print("Choose your attributes:")
+    courage = int(input("Courage level (1-10): "))
+    while courage < 0 or courage > 10 :
+        courage = int(input("Courage level (1-10): "))
+
+    intelligence = int(input("Intelligence level (1-10): "))
+    while intelligence < 0 or intelligence > 10 :
+        intelligence = int(input("Intelligence level (1-10): "))
+
+    loyalty = int(input("Loyalty level (1-10): "))
+    while loyalty < 0 or loyalty < 10 :
+        loyalty = int(input("Loyalty level (1-10): "))
+
+    ambition = int(input("Ambition level (1-10): "))
+    while ambition <0 or ambition > 10 :
+        ambition = int(input("Ambition level (1-10): "))
+
+    attributes = {
+        "Courage" : courage,
+        "Intelligence" : intelligence,
+        "Loyalty" : loyalty,
+        "Ambition" : ambition
+    }
+
+    return init_character(ln, fn, attributes)
+
 
 def receive_letter():
     """
@@ -42,7 +69,32 @@ Grimoire hint: The exit() function immediately terminates program execution. Onc
 further instructions are executed, and the program stops at that point. You can pass an exit code
 to indicate the reason for termination: 0 for normal exit, or any other value to signal an error.
     """
-    return None
+    print("An owl flies through the window, delivering a letter sealed with the Hogwarts crest...")
+    input()
+    print("“Dear Student,")
+    input()
+    print("We are pleased to inform you that you have been accepted to Hogwarts School of Witchcraft and Wizardry!”")
+    input()
+    print("Do you accept this invitation and go to Hogwarts?")
+    input()
+    print("1. Yes, of course!")
+    input()
+    print("2. No, I'd rather stay with Uncle Vernon...")
+    input()
+    choice = 0
+    while choice <= 0 or choice >= 3 :
+        choice = int(input("Your choice : "))
+    if choice == 1 :
+        pass
+    else :
+        print("You tear up the letter, and Uncle Vernon cheers:")
+        input()
+        print("“EXCELLENT! Finally, someone NORMAL in this house!”")
+        input()
+        print("The magical world will never know you existed... Game over.")
+        exit()
+
+
 
 def meet_hagrid(character):
     """
@@ -50,7 +102,20 @@ This function introduces the character Hagrid. It displays a short dialogue and 
 they want to follow him. Regardless of the choice, Hagrid ends up leading the player to Diagon
 Alley.
     """
-    return None
+    print("Hagrid: 'Hello Harry! I’m here to help you with your shopping on Diagon Alley.'")
+    input()
+    print("Do you want to follow Hagrid?")
+    input()
+    print("1. Yes")
+    input()
+    print("2. No")
+    input()
+    choice = 0
+    while choice <= 0 or choice >= 3 :
+        choice = int(input("Your choice : "))
+    print("Hagrid gently insists and takes you along anyway!")
+
+
 
 def buy_cuplies(character):
     """
@@ -67,14 +132,16 @@ Please note: The budget is checked before each purchase. If the player does not 
 money or forgets a mandatory item, they lose the game.
 Finally, the function displays the character's final inventory.
     """
+
+
     return None
 
 def start_chapter_1():
     introduction()
     create_character()
     receive_letter()
-    meet_hagrid()
-    buy_cuplies()
+    meet_hagrid(create_character())
+    buy_cuplies(create_character())
     print("End of Chapter 1! Your adventure begins at Hogwarts...")
 
     return display_character()
