@@ -22,11 +22,26 @@ Grimoire hint: Consider iterating directly over the keys of a dictionary. If a k
 • a list: convert its elements to strings and join them using join().
 • otherwise, simply display the value.
     """
+
     print("Character profile:")
-    for elt in character:
-        for key in elt:
-            print(f"{elt} : {key}")
-    return None
+
+    for key in character:
+        value = character[key]
+        nice_key = key.replace("_", " ").capitalize() # make it readable | replaces underscores with spaces and the first letter is capitalized
+        if isinstance(value, dict): # if value is a dictionary
+            print(f"{nice_key}:")
+            for subkey in value:
+                subvalue = value[subkey]
+                n_subkey = subkey.replace("_", " ").capitalize()
+                print(f"- {n_subkey}: {subvalue}")
+        elif isinstance(value, list): # if value is a list
+            joined = ", ".join(str(x) for x in value)
+            print(f"{nice_key}: {joined}")
+        else:
+            print(f"{nice_key}: {value}")
+
+
+
 
 def modify_money(character, amount):
     """
@@ -35,10 +50,15 @@ player's character's current amount of money.
 Grimoire hint: Use this function to manage the player's financial transactions throughout the
 game.
     """
-    return None
+
+    for key in character:
+        for value in key:
+            if key == "Money":
+                key[value] += amount
 
 
-def add_item(Character, key, item):
+
+def add_item(character, key, item):
     """
     This function adds an item to the list corresponding to the field specified by the key parameter in
 the character dictionary. The key can be either 'Inventory' or 'Spells'. The item, passed as a string,
@@ -46,3 +66,9 @@ is appended to the specified list.
 Grimoire hint: Call this function whenever the player obtains or recovers a new item or spell
 during their journey.
     """
+    for keys in character :
+        for value in keys :
+            if keys == "Inventory" :
+                value.append(item)
+            if keys == "Spells" :
+                value.append(item)
