@@ -6,6 +6,7 @@ The chapter_2.py module manages the second chapter of the adventure, "The Journe
 Hogwarts," """
 
 def meet_friends(character):
+
     return None
 
 def welcome_message():
