@@ -6,7 +6,12 @@ and displays a message showing the change and the new total. If the house cannot
 warning message is displayed. This function does not return a value but modifies the dictionary
 passed as a parameter directly.
     """
-    return None
+    for house in houses:
+        for score in house:
+            if house == house_name :
+                score += points
+
+
 
 def display_winning_house(houses):
     """
@@ -16,10 +21,19 @@ as the winner. In the event of a tie, all the houses that are tied are listed.
     """
 
     if len(houses) == 1:
-        return f"{...} house is the winner."
+        return f"{houses[0][0]} house is the winner."
+    m = houses[0]
+
     for house in houses:
-        ...
-    return None
+        if house[0] > m :
+            m = house
+    ma = [m]
+    for house in houses:
+        if house[0] == m :
+            ma.append(house)
+    return ma
+
+
 
 def assign_house(character, questions):
     """
@@ -52,3 +66,22 @@ returns the name of that house.
 the assignment runs smoothly. A complete example of execution is available in the dedicated
 section. !!!!!
     """
+
+    houses = {
+        "Gryffindor" : 0,
+    "Slytherin" : 0,
+    "Hufflepuff" : 0,
+    "Ravenclaw" : 0
+    }
+
+    att = character.get("attributes", {})
+
+    courage = att.get("courage", 0)
+    ambition = att.get("ambition", 0)
+    loyalty = att.get("loyalty", 0)
+    intelligence = att.get("intelligence", 0)
+
+    houses["Gryffindor"] += courage * 2
+    houses["Slytherin"] += ambition * 2
+    houses["Hufflepuff"] += loyalty * 2
+    houses["Ravenclaw"] += intelligence * 2
