@@ -4,7 +4,7 @@
 • Settling into the common room.
 The chapter_2.py module manages the second chapter of the adventure, "The Journey to
 Hogwarts," """
-from utils.input_utils import ask_choice
+from utils.input_utils import *
 from universe.house import assign_house
 
 def meet_friends(character):
@@ -77,11 +77,17 @@ def sorting_ceremony(character):
     ]
     final_house = assign_house(character, questions)
     character["house"] = final_house
-    return
+    print("Sorting Hat : Uhmmm... I see")
+    input()
+    print(f"The Sorting Hat exclaims: {final_house}!!!")
+    input()
+    print(f"You join the {final_house} students to loud cheers!")
+    input()
+
 
 def enter_common_room(character):
     input()
     print("You follow the prefects through the castle corridors...")
     input()
-    print("You discover a vaulted common room, illuminated by the green glow of the lake. Students watch you with curiosity and respect.")
+    house_info = load_file("houses.json")
     input()
