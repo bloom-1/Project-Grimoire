@@ -88,7 +88,7 @@ section. !!!!!
 
     for(question,choice,house_corresponding) in questions:
         sorting_choice = ask_choice(question, choice)
-        house = house_corresponding[sorting_choice]
+        house = house_corresponding[sorting_choice-1]
         houses[house] += 3
 
 
