@@ -86,4 +86,17 @@ section. !!!!!
     houses["Hufflepuff"] += loyalty * 2
     houses["Ravenclaw"] += intelligence * 2
 
-    for(question,choice,house) in questions:
+    for(question,choice,house_corresponding) in questions:
+        sorting_choice = ask_choice(question, choice)
+        house = house_corresponding[sorting_choice]
+        houses[house] += 3
+
+
+    highest_score = 0
+    for house in houses:
+        score = houses[house]
+        if score > highest_score:
+            highest_score = score
+            final_house = house
+
+    return final_house
