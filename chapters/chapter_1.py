@@ -1,5 +1,5 @@
 from universe.character import init_character, display_character
-
+import json
 """
 Chapter 1 – Arrival in the magical world:
 • Player’s character creation: last name, first name, and starting attributes.
@@ -117,7 +117,7 @@ Alley.
 
 
 
-def buy_cuplies(character):
+def buy_suplies(character):
     """
 This function allows to buy the required school supplies on Diagon Alley. The complete catalog is
 loaded from the data/inventory.json file. The player must buy the three essential items: Magic
@@ -133,6 +133,59 @@ money or forgets a mandatory item, they lose the game.
 Finally, the function displays the character's final inventory.
     """
 
+    with open('inventory.json', 'r') as f:
+        inv = json.load(f)
+
+    for cat in inv['catalog']:
+        print(cat)
+
+    input()
+    print(f"You have {character[3][0]} Galleons.")
+    req = ["Magic Wand", "Wizard Robe", "Potions Book"]
+    print(f"Remaining required items : {req}")
+    choice = int(input("Enter the number of item to buy : "))
+    p = 0
+    for cat in inv['catalog']:
+        if cat[0] == choice :
+            it = cat[1]
+            for car in cat[2]:
+                try :
+                    p += int(car)
+                except:
+                    continue
+            if character[3][0] >= p :
+                character[3][0] -= p
+            else:
+                print("You don't have enough Galleons")
+
+    for i in req:
+        if i == it:
+            req -= it
+
+    print(f"You bought : {it} (-{p} Galleons")
+    input()
+    print(f"You have {character[3][0]} Galleons.")
+    print(f"Remaining required items : {req}")
+    choice = int(input("Enter the number of item to buy : "))
+    p = 0
+    for cat in inv['catalog']:
+        if cat[0] == choice:
+            it = cat[1]
+            for car in cat[2]:
+                try:
+                    p += int(car)
+                except:
+                    continue
+            character[3][0] -= p
+
+    for i in req:
+        if i == it:
+            req -= it
+    print(f"You bought : {it} (-{p} Galleons")
+
+
+    for ani in inv['pets']:
+        print(ani)
 
     return None
 
@@ -141,7 +194,7 @@ def start_chapter_1():
     create_character()
     receive_letter()
     meet_hagrid(create_character())
-    buy_cuplies(create_character())
+    buy_suplies(create_character())
     print("End of Chapter 1! Your adventure begins at Hogwarts...")
 
     return display_character()
