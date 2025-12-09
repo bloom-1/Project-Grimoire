@@ -34,7 +34,7 @@ as the winner. In the event of a tie, all the houses that are tied are listed.
     return ma
 
 
-
+from utils.input_utils import ask_choice
 def assign_house(character, questions):
     """
     This function determines a player’s house by combining the character’s personal attributes with
@@ -85,3 +85,5 @@ section. !!!!!
     houses["Slytherin"] += ambition * 2
     houses["Hufflepuff"] += loyalty * 2
     houses["Ravenclaw"] += intelligence * 2
+
+    for(question,choice,house) in questions:

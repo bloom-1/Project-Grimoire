@@ -5,7 +5,7 @@
 The chapter_2.py module manages the second chapter of the adventure, "The Journey to
 Hogwarts," """
 from utils.input_utils import ask_choice
-
+from universe.house import assign_house
 
 def meet_friends(character):
     print("You board the Hogwarts Express. The train slowly departs northward...")
@@ -48,11 +48,40 @@ def meet_friends(character):
     input()
     print("Your choices already say a lot about your personality!")
     input()
-    print(f"Your updated attribute {character['attributes']}")
+    print(f"Your updated attributes: {character['attributes']}")
 def welcome_message():
     input()
     return "Professor Dumbledore : Welcome !"
 
 def sorting_ceremony(character):
+    input()
+    print("The sorting ceremony begins in the Great Hall...")
+    input()
+    print("The sorting Hat observes")
+    questions = [
+        (
+            "You see a friend in danger. What do you do?",
+            ["Rush to help", "Think of a plan", "Seek help", "Stay calm and observe"],
+             ["Gryffindor", "Slytherin", "Hufflepuff", "Ravenclaw"]
+        ),
+        (
+            "Which trait describes you best?",
+            ["Brave and loyal", "Cunning and ambitious", "Patient and hardworking", "Intelligent and curious"],
+             ["Gryffindor", "Slytherin", "Hufflepuff", "Ravenclaw"]
+        ),
+        (
+            "When faced with a difficult challenge, you...",
+            ["Charge in without hesitation", "Look for the best strategy", "Rely on your friends", "Analyze the problem"],
+            ["Gryffindor", "Slytherin", "Hufflepuff", "Ravenclaw"]
+        )
+    ]
+    final_house = assign_house(character, questions)
+    character["house"] = final_house
     return
 
+def enter_common_room(character):
+    input()
+    print("You follow the prefects through the castle corridors...")
+    input()
+    print("You discover a vaulted common room, illuminated by the green glow of the lake. Students watch you with curiosity and respect.")
+    input()
