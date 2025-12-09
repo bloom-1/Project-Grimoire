@@ -1,51 +1,10 @@
 {
-  "catalog": [
-    {
-      "num" : "1",
-      "object": "Magic Wand (required)",
-      "price": "35 Galleons"
-    },
-    {
-      "num" : "2",
-      "object": "Wizard Robe (required)",
-      "price": "20 Galleons"
-    },
-    {
-      "num" : "3",
-      "object": "Tin Cauldron",
-      "price": "15 Galleons"
-    },
-    {
-      "num" : "4",
-      "object": "Potions Book (required)",
-      "price": "25 Galleons"
-    },
-    {
-      "num" : "5",
-      "object": "Magic Quill",
-      "price": "5 Galleons"
-    },
-    {
-      "num" : "6",
-      "object": "Enchanted Book",
-      "price": "30 Galleons"
-    },
-    {
-      "num" : "7",
-      "object": "Copper Scale",
-      "price": "10 Galleons"
-    },
-    {
-      "num" : "8",
-      "object": "Invisibility Cloak",
-      "price": "100 Galleons"
-    }
-  ],
-  "pets": [
-    {"num" : "1", "animal": "Owl", "price": "20 Galleons"},
-    {"num" : "2", "animal":  "Cat", "price":  "15 Galleons"},
-    {"num" : "3", "animal":  "Rat", "price": "10 Galleons"},
-    {"num" : "4", "animal":  "Todd", "price": "5 Galleons"}
-  ]
+    "1": ["Magic Wand", 35],
+    "2": ["Wizard Robe", 20],
+    "3": ["Tin Cauldron", 15],
+    "4": ["Potions Book", 25],
+    "5": ["Magic Quill", 5],
+    "6": ["Enchanted Book", 30],
+    "7": ["Copper Scale", 10],
+    "8": ["Invisibility Cloak", 100]
 }
-
