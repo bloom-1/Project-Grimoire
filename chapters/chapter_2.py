@@ -50,11 +50,9 @@ def meet_friends(character):
     input()
     print(f"Your updated attributes: {character['attributes']}")
 def welcome_message():
-    input()
-    return "Professor Dumbledore : Welcome !"
+    return "Professor Dumbledore : Welcome to Hogward everyone!"
 
 def sorting_ceremony(character):
-    input()
     print("The sorting ceremony begins in the Great Hall...")
     input()
     print("The sorting Hat observes")
@@ -82,12 +80,26 @@ def sorting_ceremony(character):
     print(f"The Sorting Hat exclaims: {final_house}!!!")
     input()
     print(f"You join the {final_house} students to loud cheers!")
-    input()
 
 
 def enter_common_room(character):
-    input()
     print("You follow the prefects through the castle corridors...")
     input()
-    house_info = load_file("houses.json")
+    house_info = load_file('data/houses.json')
+    house = character["house"]
+    print(house_info[house]["emoji"],house_info[house]["description"])
     input()
+    print(house_info[house]["installation_message"])
+    input()
+    print(f"Your house colors: {",".join(house_info[house]["colors"])}")
+
+def start_chapter_2(character):
+    print(meet_friends(character))
+    input()
+    print(welcome_message())
+    input()
+    print(sorting_ceremony(character))
+    input()
+    print(enter_common_room(character))
+    input()
+    return character
