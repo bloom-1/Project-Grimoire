@@ -57,4 +57,3 @@ def start_chapter_3(character, houses):
     update_house_points(houses, ...)
     display_winning_house(houses)
     display_character(character)
-

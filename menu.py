@@ -15,4 +15,5 @@ def launch_menu_choice():
     else :
         chapter_1.start_chapter_1()
         chapter_2.welcome_message()
-        chapter_3.
+        chapter_3.start_chapter_3()
+#        chapter_4.start_chapter_4()
