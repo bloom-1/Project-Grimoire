@@ -37,7 +37,7 @@ def ask_choice(message,options):
 
 import json
 def load_file(file_path):
-    with open('file_path','r', encoding='utf-8') as f:
+    with open(file_path,'r', encoding='utf-8') as f:
         data = json.load(f)
     return data
 
