@@ -6,7 +6,7 @@ def ask_text(message):
         else:
             return text
 
-#Need to correct error when entering str
+
 def ask_number(message, min_val=None, max_val=None):
     while True:
         number = int(input(message).strip())
@@ -28,12 +28,7 @@ def ask_choice(message,options):
             print(f"{i+1}. {options[i]}")
         choice = ask_number("Your choice:",1,len(options))
         return choice
-        """
-        if choice in range(1,len(options)+1):
-            return choice
-        else:
-            print("Please enter a valid choice.")
-        """
+
 
 import json
 def load_file(file_path):

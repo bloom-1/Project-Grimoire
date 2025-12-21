@@ -1,19 +1,24 @@
-from universe.house import assign_house
-from chapters import chapter_1, chapter_2, chapter_3, chapter_4, chapter_5_extension
+from utils.input_utils import ask_choice
+from chapters import chapter_1, chapter_2, chapter_3
+
 def display_main_menu():
     print("1. Start Chapter 1 – Arrival in the magical world.")
     print("2. Exit the game.")
 
-
 def launch_menu_choice():
-    houses = {}
-    choice = int(input(""))
-    while choice != 1 or choice != 2:
-        choice = int(input("Please choose a number between 1 and 2."))
-    if choice == 2 :
-        exit()
-    else :
-        chapter_1.start_chapter_1()
-        chapter_2.welcome_message()
-        chapter_3.start_chapter_3()
-#        chapter_4.start_chapter_4()
+    houses = {
+        "Gryffindor": 0,
+        "Slytherin": 0,
+        "Hufflepuff": 0,
+        "Ravenclaw": 0
+    }
+
+    display_main_menu()
+    choice = ask_choice("Choose an option:", ["Start Chapter 1", "Exit"])
+
+    if choice == 2:
+        return
+
+    character = chapter_1.start_chapter_1()
+    chapter_2.start_chapter_2(character)
+    chapter_3.start_chapter_3(character, houses)

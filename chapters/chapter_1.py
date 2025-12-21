@@ -1,3 +1,4 @@
+from utils.input_utils import *
 from universe.character import init_character, display_character
 import json
 """
@@ -43,7 +44,7 @@ displayed on the screen.
         intelligence = int(input("Intelligence level (1-10): "))
 
     loyalty = int(input("Loyalty level (1-10): "))
-    while loyalty < 0 or loyalty < 10 :
+    while loyalty < 0 or loyalty > 10 :
         loyalty = int(input("Loyalty level (1-10): "))
 
     ambition = int(input("Ambition level (1-10): "))
@@ -105,11 +106,8 @@ Alley.
     print("Hagrid: 'Hello Harry! I’m here to help you with your shopping on Diagon Alley.'")
     input()
     print("Do you want to follow Hagrid?")
-    input()
     print("1. Yes")
-    input()
     print("2. No")
-    input()
     choice = 0
     while choice <= 0 or choice >= 3 :
         choice = int(input("Your choice : "))
@@ -133,8 +131,7 @@ money or forgets a mandatory item, they lose the game.
 Finally, the function displays the character's final inventory.
     """
 
-    with open('inventory.json', 'r') as f:
-        inv = json.load(f)
+    inv = load_file("data/inventory.json")
 
     for cat in inv['catalog']:
         print(cat)
@@ -191,10 +188,10 @@ Finally, the function displays the character's final inventory.
 
 def start_chapter_1():
     introduction()
-    create_character()
+    character = create_character()
     receive_letter()
-    meet_hagrid(create_character())
-    buy_suplies(create_character())
+    meet_hagrid(character)
+    buy_suplies(character)
     print("End of Chapter 1! Your adventure begins at Hogwarts...")
 
     return display_character()
