@@ -6,10 +6,11 @@ and displays a message showing the change and the new total. If the house cannot
 warning message is displayed. This function does not return a value but modifies the dictionary
 passed as a parameter directly.
     """
-    for house in houses:
-        for score in house:
-            if house == house_name :
-                score += points
+    if house_name in houses:
+        houses[house_name] += points
+        print(house_name, "gains", points, "points. Total:", houses[house_name])
+    else:
+        print("Unknown house:", house_name)
 
 
 
@@ -19,19 +20,23 @@ def display_winning_house(houses):
 of houses with the current scores as a parameter. If only one house is in the lead, it is displayed
 as the winner. In the event of a tie, all the houses that are tied are listed.
     """
+    max_points = None
 
-    if len(houses) == 1:
-        return f"{houses[0][0]} house is the winner."
-    m = houses[0]
+    for house_name in houses:
+        points = houses[house_name]
+        if max_points is None or points > max_points:
+            max_points = points
 
-    for house in houses:
-        if house[0] > m :
-            m = house
-    ma = [m]
-    for house in houses:
-        if house[0] == m :
-            ma.append(house)
-    return ma
+    winners = []
+    for house_name in houses:
+        if houses[house_name] == max_points:
+            winners.append(house_name)
+
+    if len(winners) == 1:
+        print("Winning house:", winners[0], "with", max_points, "points.")
+    else:
+        print("Tie between:", ", ".join(winners), "with", max_points, "points.")
+
 
 
 from utils.input_utils import ask_choice

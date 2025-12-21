@@ -5,7 +5,7 @@ def init_character(last_name : str, first_name : str, attributes)->dict:
 "Money": 100,
 "Inventory": [],
 "Spells": [],
-"Attributes": attributes
+"attributes": attributes
 }
     return d
 

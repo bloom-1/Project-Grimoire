@@ -115,83 +115,87 @@ Alley.
 
 
 
+
+
 def buy_suplies(character):
     """
-This function allows to buy the required school supplies on Diagon Alley. The complete catalog is
-loaded from the data/inventory.json file. The player must buy the three essential items: Magic
-wand, Wizard robe, and Potions book.
-Once these purchases have been made, the player must choose a pet from among the authorized
-species:
-• Owl - 20 galleons
-• Cat - 15 galleons
-• Rat - 10 galleons
-• Toad - 5 galleons
-Please note: The budget is checked before each purchase. If the player does not have enough
-money or forgets a mandatory item, they lose the game.
-Finally, the function displays the character's final inventory.
-    """
-
+  This function allows to buy the required school supplies on Diagon Alley. The complete catalog is
+  loaded from the data/inventory.json file. The player must buy the three essential items: Magic
+  wand, Wizard robe, and Potions book.
+  Once these purchases have been made, the player must choose a pet from among the authorized
+  species:
+  • Owl - 20 galleons
+  • Cat - 15 galleons
+  • Rat - 10 galleons
+  • Toad - 5 galleons
+  Please note: The budget is checked before each purchase. If the player does not have enough
+  money or forgets a mandatory item, they lose the game.
+  Finally, the function displays the character's final inventory.
+      """
     inv = load_file("data/inventory.json")
 
-    for cat in inv['catalog']:
-        print(cat)
+    print("Welcome to Diagon Alley!")
+    print("Catalog of available items:")
+    for key in inv:
+        print(f"{key}. {inv[key][0]} - {inv[key][1]} Galleons")
 
-    input()
-    print(f"You have {character[3][0]} Galleons.")
-    req = ["Magic Wand", "Wizard Robe", "Potions Book"]
-    print(f"Remaining required items : {req}")
-    choice = int(input("Enter the number of item to buy : "))
-    p = 0
-    for cat in inv['catalog']:
-        if cat[0] == choice :
-            it = cat[1]
-            for car in cat[2]:
-                try :
-                    p += int(car)
-                except:
-                    continue
-            if character[3][0] >= p :
-                character[3][0] -= p
-            else:
-                print("You don't have enough Galleons")
+    required = ["Magic Wand", "Wizard Robe", "Potions Book"]
 
-    for i in req:
-        if i == it:
-            req -= it
+    while len(required) > 0:
+        print(f"You have {character['Money']} Galleons.")
+        print("Remaining required items:", ", ".join(required))
+        choice = ask_number("Enter the number of the item to buy: ", 1, len(inv))
 
-    print(f"You bought : {it} (-{p} Galleons")
-    input()
-    print(f"You have {character[3][0]} Galleons.")
-    print(f"Remaining required items : {req}")
-    choice = int(input("Enter the number of item to buy : "))
-    p = 0
-    for cat in inv['catalog']:
-        if cat[0] == choice:
-            it = cat[1]
-            for car in cat[2]:
-                try:
-                    p += int(car)
-                except:
-                    continue
-            character[3][0] -= p
+        item_name = inv[str(choice)][0]
+        price = inv[str(choice)][1]
 
-    for i in req:
-        if i == it:
-            req -= it
-    print(f"You bought : {it} (-{p} Galleons")
+        if item_name not in required and item_name in character["Inventory"]:
+            print("You already bought this item.")
+            continue
 
+        if character["Money"] < price:
+            print("You don't have enough Galleons.")
+            continue
 
-    for ani in inv['pets']:
-        print(ani)
+        character["Money"] -= price
+        character["Inventory"].append(item_name)
+        if item_name in required:
+            required.remove(item_name)
 
-    return None
+        print(f"You bought: {item_name} (-{price} Galleons).")
+
+    pets = {
+        "1": ("Owl", 20),
+        "2": ("Cat", 15),
+        "3": ("Rat", 10),
+        "4": ("Toad", 5)
+    }
+
+    print("It's time to choose your Hogwarts pet!")
+    print(f"You have {character['Money']} Galleons.")
+    print("Available pets:")
+    for k in pets:
+        print(f"{k}. {pets[k][0]} - {pets[k][1]} Galleons")
+
+    pet_chosen = False
+    pet_choice = ask_number("Your choice: ", 1, 4)
+    pet_name, pet_price = pets[str(pet_choice)]
+    if character["Money"] < pet_price:
+        print("You don't have enough Galleons for this pet.")
+    else:
+        character["Money"] -= pet_price
+        character["Inventory"].append(pet_name)
+        print(f"You chose: {pet_name} (-{pet_price} Galleons).")
+        pet_chosen = True
+
+    display_character(character)
 
 def start_chapter_1():
-    introduction()
+    print(introduction())
     character = create_character()
     receive_letter()
     meet_hagrid(character)
     buy_suplies(character)
     print("End of Chapter 1! Your adventure begins at Hogwarts...")
 
-    return display_character()
+    return character

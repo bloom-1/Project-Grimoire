@@ -16,10 +16,10 @@ def meet_friends(character):
     ron_choice = ask_choice("How do you respond?",["Sure, have a seat!","Sorry, i prefer to travel alone."])
     if ron_choice == 1:
         print("Ron smiles: — Awesome! You'll see, Hogwarts is amazing!")
-        character["attributes"]["loyalty"] += 1
+        character["attributes"]["Loyalty"] += 1
     elif ron_choice == 2:
         print("Oh... Ok")
-        character["attributes"]["ambition"] += 1
+        character["attributes"]["Ambition"] += 1
     input()
     print("A girl enters next, already carrying a stack of books.")
     input()
@@ -28,21 +28,21 @@ def meet_friends(character):
     hermione_choice = ask_choice("How do you respond?",["Yes, I love learning new things!","Uh... no, I prefer adventures over books."])
     if hermione_choice == 1:
         print("Hermione smiles, impressed: — Oh, that's rare! You must be very clever!")
-        character["attributes"]["intelligence"] += 1
+        character["attributes"]["Intelligence"] += 1
     elif hermione_choice == 2:
-        character["attributes"]["courage"] += 1
+        character["attributes"]["Courage"] += 1
     input()
     print("Then a blonde boy enters, looking arrogant.")
     input()
     print("I'm Draco Malfoy. It's best to choose your friends carefully from the start, don't you think ?")
     draco_choice = ask_choice("How do you respond?",["Shake his hand politely","Ignore him completely.","Respond with arrogance."])
     if draco_choice == 1:
-        character["attributes"]["ambition"] += 1
+        character["attributes"]["Ambition"] += 1
     elif draco_choice == 2:
         print("Draco frowns, annoyed. — You'll regret that!")
-        character["attributes"]["loyalty"] += 1
+        character["attributes"]["Loyalty"] += 1
     elif draco_choice == 3:
-        character["attributes"]["courage"] += 1
+        character["attributes"]["Courage"] += 1
     input()
     print("The train continues its journey. Hogwarts Castle appears on the horizon...")
     input()
