@@ -33,7 +33,6 @@ def receive_letter():
     print("An owl flies through the window, delivering a letter sealed with the Hogwarts crest...")
     input()
     print("Dear Student,")
-    input()
     print("We are pleased to inform you that you have been accepted to Hogwarts School of Witchcraft and Wizardry!")
     input()
 
@@ -44,21 +43,17 @@ def receive_letter():
 
     if choice == "No, I'd rather stay with Uncle Vernon...":
         print("You tear up the letter, and Uncle Vernon cheers:")
-        input()
         print("EXCELLENT! Finally, someone NORMAL in this house!")
-        input()
         print("The magical world will never know you existed... Game over.")
         exit(0)
 
 
 def meet_hagrid(character):
-    print("Hagrid: 'Hello " + character["First Name"] + "! I’m here to help you with your shopping on Diagon Alley.'")
+    print("Hagrid: 'Hello " + character["First Name"] + "! I'm here to help you with your shopping on Diagon Alley.'")
     input()
     choice = ask_choice("Do you want to follow Hagrid?", ["Yes", "No"])
     if choice == "No":
         print("Hagrid gently insists and takes you along anyway!")
-    else:
-        print("Hagrid smiles and leads the way.")
     input()
 
 
