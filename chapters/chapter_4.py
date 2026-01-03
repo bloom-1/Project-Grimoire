@@ -1,3 +1,6 @@
+from random import randint, random
+
+
 def create_team(house, team_data, is_player=False, player=None):
     team = {'name' : house[0], 'score':0, 'has_scored' : 0,
             'has_stopped' : 0, 'caught_snitch' : False,
@@ -6,4 +9,13 @@ def create_team(house, team_data, is_player=False, player=None):
     if is_player == True :
         np[team_data[0]] = 'Seeker'
         for i in range(1,len(team_data)):
-            np[team_data[i]] = pass
+            np[team_data[i]] = None
+
+
+def attempt_goal(attacking_team, defending_team, player_is_seeker : bool):
+    chance_goal = randint(1,10)
+    if chance_goal >= 6:
+        if player_is_seeker == True : pass
+        else : 
+            ... = random(attacking_team)
+
