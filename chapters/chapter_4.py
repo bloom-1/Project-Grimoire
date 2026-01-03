@@ -137,3 +137,4 @@ def start_chapter_4_quidditch(character, houses_points):
     print("End of Chapter 4!")
     input()
     return character
+
