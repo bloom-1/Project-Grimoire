@@ -6,6 +6,7 @@ def display_main_menu():
     print("1. Start Chapter 1 – Arrival in the magical world.")
     print("2. Exit the game.")
 
+
 def launch_menu_choice():
     houses = {
         "Gryffindor": 0,
@@ -15,9 +16,10 @@ def launch_menu_choice():
     }
 
     display_main_menu()
+
     choice = ask_choice("Choose an option:", ["Start Chapter 1", "Exit"])
 
-    if choice == 2 or "Exit":
+    if choice == 2 or choice == "Exit":
         return
 
     character = chapter_1.start_chapter_1()
