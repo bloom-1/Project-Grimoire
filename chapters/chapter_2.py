@@ -4,7 +4,7 @@
 • Settling into the common room.
 The chapter_2.py module manages the second chapter of the adventure, "The Journey to
 Hogwarts," """
-from utils.input_utils import *
+from utils.input_utils import ask_choice, load_file
 from universe.house import assign_house
 
 def meet_friends(character):
@@ -14,10 +14,10 @@ def meet_friends(character):
     input()
     print("Hi ! I'm Ron Weasley. Mind if I sit with you?")
     ron_choice = ask_choice("How do you respond?",["Sure, have a seat!","Sorry, i prefer to travel alone."])
-    if ron_choice == 1:
+    if ron_choice == 1 or "Sure, have a seat!":
         print("Ron smiles: — Awesome! You'll see, Hogwarts is amazing!")
         character["attributes"]["Loyalty"] += 1
-    elif ron_choice == 2:
+    else:
         print("Oh... Ok")
         character["attributes"]["Ambition"] += 1
     input()
@@ -26,22 +26,22 @@ def meet_friends(character):
     print("Hello, I'm Hermione Granger. Have you ever read 'A History of Magic'")
     input()
     hermione_choice = ask_choice("How do you respond?",["Yes, I love learning new things!","Uh... no, I prefer adventures over books."])
-    if hermione_choice == 1:
+    if hermione_choice == 1 or "Yes, I love learning new things!":
         print("Hermione smiles, impressed: — Oh, that's rare! You must be very clever!")
         character["attributes"]["Intelligence"] += 1
-    elif hermione_choice == 2:
+    else:
         character["attributes"]["Courage"] += 1
     input()
     print("Then a blonde boy enters, looking arrogant.")
     input()
     print("I'm Draco Malfoy. It's best to choose your friends carefully from the start, don't you think ?")
     draco_choice = ask_choice("How do you respond?",["Shake his hand politely","Ignore him completely.","Respond with arrogance."])
-    if draco_choice == 1:
+    if draco_choice == 1 or "Shake his hand politely.":
         character["attributes"]["Ambition"] += 1
-    elif draco_choice == 2:
+    elif draco_choice == 2 or "Ignore him completely":
         print("Draco frowns, annoyed. — You'll regret that!")
         character["attributes"]["Loyalty"] += 1
-    elif draco_choice == 3:
+    else:
         character["attributes"]["Courage"] += 1
     input()
     print("The train continues its journey. Hogwarts Castle appears on the horizon...")
@@ -50,7 +50,8 @@ def meet_friends(character):
     input()
     print(f"Your updated attributes: {character['attributes']}")
 def welcome_message():
-    return "Professor Dumbledore : Welcome to Hogward everyone!"
+    print("Professor Dumbledore : Welcome to Hogwarts everyone!")
+    input()
 
 def sorting_ceremony(character):
     print("The sorting ceremony begins in the Great Hall...")
@@ -91,15 +92,17 @@ def enter_common_room(character):
     input()
     print(house_info[house]["installation_message"])
     input()
-    print(f"Your house colors: {",".join(house_info[house]["colors"])}")
+    print("Your house colors: " + ",".join(house_info[house]["colors"]))
+    input()
+
 
 def start_chapter_2(character):
-    print(meet_friends(character))
+    meet_friends(character)
     input()
-    print(welcome_message())
+    welcome_message()
     input()
-    print(sorting_ceremony(character))
+    sorting_ceremony(character)
     input()
-    print(enter_common_room(character))
+    enter_common_room(character)
     input()
     return character

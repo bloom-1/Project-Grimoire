@@ -25,12 +25,12 @@ def learn_spells(character, file_path="data/spells.json"):
     learned = []
 
 
-    learned.append(defensive[randint(0, len(defensive) - 1)])
-    learned.append(offensive[randint(0, len(offensive) - 1)])
+    learned.append(defensive[random.randint(0, len(defensive) - 1)])
+    learned.append(offensive[random.randint(0, len(offensive) - 1)])
 
     picked = 0
     while picked < 3:
-        sp = utility[randint(0, len(utility) - 1)]
+        sp = utility[random.randint(0, len(utility) - 1)]
         if sp not in learned:
             learned.append(sp)
             picked += 1
