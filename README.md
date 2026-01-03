@@ -27,7 +27,7 @@ WEEK 3:
 - Added different choices with consequences
 - Implemented the Sorting Ceremony
 - Linked attributes to house assignment
-- Used JSON files to store house information
+
 
 
 
